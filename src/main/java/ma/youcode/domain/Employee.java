@@ -1,4 +1,4 @@
-package ma.youcode.model;
+package ma.youcode.domain;
 
 import lombok.Data;
 
