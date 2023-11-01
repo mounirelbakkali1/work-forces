@@ -2,23 +2,23 @@ package ma.youcode;
 
 
 import ma.youcode.configuration.AppConfig;
+import ma.youcode.configuration.SpringDataJpaConfig;
 import ma.youcode.domain.Employee;
-import ma.youcode.repository.EmployeeRepository;
+import ma.youcode.service.EmployeeService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class Application
 {
 
     public static void main(String[] args )
     {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class, SpringDataJpaConfig.class);
         String[] beans = context.getBeanDefinitionNames();
-        for (String bean : beans) {
-            System.out.println(bean);
-        }
-        EmployeeRepository employeeRepository = context.getBean(EmployeeRepository.class);
-        employeeRepository.save(Employee.builder().name("test").build());
+        EmployeeService employeeService = context.getBean("employeeServiceImpl", EmployeeService.class);
+        //employeeService.addNewEmployee(Employee.builder().name("test").build());
+        System.out.println("employeeService = " + employeeService.getAllEmployees());
     }
 }

@@ -2,7 +2,11 @@ package ma.youcode.service.Impl;
 
 import ma.youcode.domain.Employee;
 import ma.youcode.service.EmployeeService;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class RHService implements EmployeeService {
     @Override
     public String getEmployeeFirstName() {
@@ -19,4 +23,10 @@ public class RHService implements EmployeeService {
     public void addNewEmployee(Employee employee) {
 
     }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        return null;
+    }
+
 }
